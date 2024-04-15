@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Generated Music</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Your Generated Music</h2>
+        <audio controls>
+            <source src="data:audio/wav;base64,{{audio_data}}" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+        <h3>Waveform</h3>
+        <img src="data:image/png;base64,{{waveform}}" alt="Waveform Image">
+        <a href="/">Generate Another</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    <title>Music Generation</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Generate Your Track</h1>
+        <form id="musicForm">
+            <div class="input-group">
+                <label for="promt">Prompt</label>
+                <input type="text" id="prompt" name="prompt" placeholder="Enter music style and mood..." required>
+            </div>
+            <div class="input-group">
+                <label for="negative_prompt">Neg Prompt</label>
+                <input type="text" id="negative_prompt" name="negative_prompt" placeholder="Quality to avoid..." required>
+            </div>
+            <div class="input-group slider-container">
+                <label for="num_steps">Steps: 100</label>
+                <input type="range" id="num_steps" name="num_steps" step="10" min="50" max="500" value="100" oninput="updateLabel(this.id, this.value, 'Steps')" required>
+            </div>
+            <div class="input-group slider-container">
+                <label for="audio_length">Length: 20s</label>
+                <input type="range" id="audio_length" name="audio_length" min="5" max="60" value="20" oninput="updateLabel(this.id, this.value, 'Length')" required>
+            </div>
+            <button type="button" id="generateButton" onclick="submitForm()">Generate</button>
+        </form>
+        <div id="audioPlayer" style="display:none;">
+            <h3>Generated Music:</h3>
+            <audio controls></audio>
+        </div>
+    </div>
+</body>
+</html>
